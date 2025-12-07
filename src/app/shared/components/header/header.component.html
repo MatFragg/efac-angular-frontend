@@ -1,0 +1,24 @@
+<header class="header">
+    <div class="header-container">
+        <!-- Brand/Logo Text -->
+        <div class="brand">
+            <span class="brand-text">EFACT</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <a *ngFor="let item of navigationItems" [routerLink]="item.route" class="nav-item"
+                routerLinkActive="active">
+                {{ item.label }}
+            </a>
+        </nav>
+
+        <!-- Right Section -->
+        <div class="header-right">
+            <span class="help-text">¿Necesitas ayuda?</span>
+            <button mat-icon-button class="user-button">
+                <mat-icon>person</mat-icon>
+            </button>
+        </div>
+    </div>
+</header>

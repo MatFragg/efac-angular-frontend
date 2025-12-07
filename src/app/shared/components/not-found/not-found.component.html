@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div class="not-found-page">
+    <div class="not-found-container">
+        <div class="not-found-content">
+            <!-- 404 Icon -->
+            <div class="error-icon">
+                <mat-icon>error_outline</mat-icon>
+            </div>
+
+            <!-- Error Code -->
+            <h1 class="error-code">404</h1>
+
+            <!-- Error Message -->
+            <h2 class="error-title">Página No Encontrada</h2>
+            <p class="error-description">
+                Lo sentimos, la página que estás buscando no existe o está en desarrollo.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button mat-raised-button color="primary" (click)="goHome()">
+                    <mat-icon>home</mat-icon>
+                    Ir a Inicio
+                </button>
+                <button mat-stroked-button (click)="goBack()">
+                    <mat-icon>arrow_back</mat-icon>
+                    Volver
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
