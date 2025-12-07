@@ -1,0 +1,125 @@
+<!-- Header Navigation -->
+<app-header></app-header>
+
+<div class="documents-page">
+    <div class="page-container">
+        <!-- Search Section (shown when no documents loaded) -->
+        @if (!documentData() && !isLoading() && !errorMessage()) {
+        <div class="search-section">
+            <div class="search-card">
+                <div class="search-header">
+                    <mat-icon class="search-icon">description</mat-icon>
+                    <div>
+                        <h1 class="search-title">Visor de Documentos Electrónicos</h1>
+                        <p class="search-subtitle">Ingrese el número de ticket para consultar sus documentos</p>
+                    </div>
+                </div>
+
+                <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="search-form">
+                    <mat-form-field appearance="outline" class="ticket-field">
+                        <mat-label>Número de Ticket</mat-label>
+                        <input matInput type="text" formControlName="ticket" placeholder="Ej: 12345678"
+                            autocomplete="off" />
+                        <mat-icon matPrefix>confirmation_number</mat-icon>
+                        @if (ticketForm.get('ticket')?.hasError('required') && ticketForm.get('ticket')?.touched) {
+                        <mat-error>El número de ticket es requerido</mat-error>
+                        }
+                        @if (ticketForm.get('ticket')?.hasError('minlength') && ticketForm.get('ticket')?.touched) {
+                        <mat-error>El ticket debe tener al menos 3 caracteres</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" type="submit" class="search-button"
+                        [disabled]="ticketForm.invalid || isLoading()">
+                        <mat-icon>search</mat-icon>
+                        <span>Buscar Documentos</span>
+                    </button>
+                </form>
+
+                <div class="search-info">
+                    <mat-icon>info</mat-icon>
+                    <p>El número de ticket se encuentra en su comprobante de pago o en el correo de confirmación.</p>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Loading State -->
+        @if (isLoading()) {
+        <div class="state-container">
+            <app-loading-spinner size="large"></app-loading-spinner>
+            <p>Cargando documentos...</p>
+        </div>
+        }
+
+        <!-- Error State -->
+        @else if (errorMessage()) {
+        <div class="state-container">
+            <app-error-message [message]="errorMessage()"></app-error-message>
+        </div>
+        }
+
+        <!-- Documents Section -->
+        @else if (documentData()) {
+        <div class="documents-section">
+            <!-- Section Header with Download Buttons -->
+            <div class="section-header">
+                <h2 class="section-title">Documentos</h2>
+                <div class="download-actions">
+                    <span class="download-label">Descarga:</span>
+
+                    @if (documentData()!.urls.pdfUrl) {
+                    <button mat-raised-button color="primary" class="download-btn" (click)="downloadPdf()">
+                        <mat-icon>picture_as_pdf</mat-icon>
+                        PDF
+                    </button>
+                    }
+
+                    @if (documentData()!.urls.xmlContent) {
+                    <button mat-raised-button color="primary" class="download-btn xml-btn" (click)="downloadXml()">
+                        <mat-icon>code</mat-icon>
+                        XML
+                    </button>
+                    }
+
+                    @if (documentData()!.urls.cdrContent) {
+                    <button mat-raised-button color="primary" class="download-btn cdr-btn" (click)="downloadCdr()">
+                        <mat-icon>receipt_long</mat-icon>
+                        CDR
+                    </button>
+                    }
+                </div>
+            </div>
+
+            <!-- Document Viewer -->
+            <div class="viewer-container">
+                <mat-tab-group [(selectedIndex)]="activeTabIndex" class="document-tabs" animationDuration="200ms">
+                    @if (documentData()!.urls.pdfUrl) {
+                    <mat-tab label="PDF">
+                        <div class="tab-content">
+                            <app-pdf-viewer [pdfUrl]="documentData()!.urls.pdfUrl"></app-pdf-viewer>
+                        </div>
+                    </mat-tab>
+                    }
+
+                    @if (documentData()!.urls.xmlContent) {
+                    <mat-tab label="XML">
+                        <div class="tab-content">
+                            <app-xml-viewer [xmlContent]="documentData()!.urls.xmlContent"></app-xml-viewer>
+                        </div>
+                    </mat-tab>
+                    }
+
+                    @if (documentData()!.urls.cdrContent) {
+                    <mat-tab label="CDR">
+                        <div class="tab-content">
+                            <app-cdr-viewer [cdrContent]="documentData()!.urls.cdrContent"></app-cdr-viewer>
+                        </div>
+                    </mat-tab>
+                    }
+                </mat-tab-group>
+            </div>
+        </div>
+        }
+    </div>
+</div>

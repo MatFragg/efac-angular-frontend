@@ -1,0 +1,10 @@
+<div class="cdr-viewer-container">
+    @if (cdrContent) {
+    <pre class="cdr-content"><code>{{ formatXml(cdrContent) }}</code></pre>
+    } @else {
+    <div class="empty-state">
+        <mat-icon class="empty-icon">receipt_long</mat-icon>
+        <p>No hay CDR disponible</p>
+    </div>
+    }
+</div>

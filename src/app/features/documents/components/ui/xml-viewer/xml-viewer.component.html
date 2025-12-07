@@ -1,0 +1,10 @@
+<div class="xml-viewer-container">
+    @if (xmlContent) {
+    <pre class="xml-content"><code>{{ formatXml(xmlContent) }}</code></pre>
+    } @else {
+    <div class="empty-state">
+        <mat-icon class="empty-icon">code</mat-icon>
+        <p>No hay XML disponible</p>
+    </div>
+    }
+</div>

@@ -1,0 +1,86 @@
+<div class="document-viewer-page">
+    <!-- Loading State -->
+    @if (isLoading()) {
+    <div class="loading-container">
+        <app-loading-spinner size="large"></app-loading-spinner>
+        <p>Cargando documentos...</p>
+    </div>
+    }
+
+    <!-- Error State -->
+    @else if (errorMessage()) {
+    <div class="error-container">
+        <app-error-message [message]="errorMessage()"></app-error-message>
+        <button mat-raised-button color="primary" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+            Volver
+        </button>
+    </div>
+    }
+
+    <!-- Document Viewer -->
+    @else if (documentData()) {
+    <div class="document-card">
+        <!-- Header -->
+        <div class="document-header">
+            <h1 class="document-title">Documentos</h1>
+
+            <div class="download-buttons">
+                <span class="download-label">Descarga:</span>
+
+                @if (documentData()!.urls.pdfUrl) {
+                <button mat-raised-button color="primary" class="download-btn" (click)="downloadPdf()">
+                    <mat-icon>picture_as_pdf</mat-icon>
+                    PDF
+                </button>
+                }
+
+                @if (documentData()!.urls.xmlContent) {
+                <button mat-raised-button color="primary" class="download-btn" (click)="downloadXml()">
+                    <mat-icon>code</mat-icon>
+                    XML
+                </button>
+                }
+
+                @if (documentData()!.urls.cdrContent) {
+                <button mat-raised-button color="primary" class="download-btn" (click)="downloadCdr()">
+                    <mat-icon>receipt_long</mat-icon>
+                    CDR
+                </button>
+                }
+
+                <button mat-icon-button class="user-button" aria-label="User menu">
+                    <mat-icon>person</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabs and Content -->
+        <mat-tab-group [(selectedIndex)]="activeTabIndex" class="document-tabs" animationDuration="200ms">
+            @if (documentData()!.urls.pdfUrl) {
+            <mat-tab label="PDF">
+                <div class="tab-content">
+                    <app-pdf-viewer [pdfUrl]="documentData()!.urls.pdfUrl"></app-pdf-viewer>
+                </div>
+            </mat-tab>
+            }
+
+            @if (documentData()!.urls.xmlContent) {
+            <mat-tab label="XML">
+                <div class="tab-content">
+                    <app-xml-viewer [xmlContent]="documentData()!.urls.xmlContent"></app-xml-viewer>
+                </div>
+            </mat-tab>
+            }
+
+            @if (documentData()!.urls.cdrContent) {
+            <mat-tab label="CDR">
+                <div class="tab-content">
+                    <app-cdr-viewer [cdrContent]="documentData()!.urls.cdrContent"></app-cdr-viewer>
+                </div>
+            </mat-tab>
+            }
+        </mat-tab-group>
+    </div>
+    }
+</div>

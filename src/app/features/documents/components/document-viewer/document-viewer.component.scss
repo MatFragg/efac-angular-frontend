@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.document-viewer-page {
+    min-height: 100vh;
+    background-color: #f9fafb;
+    padding: 80px 24px 24px 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.loading-container,
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 24px;
+
+    p {
+        color: #6b7280;
+        font-size: 16px;
+    }
+}
+
+.document-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    max-width: 1392px;
+    margin: 0 auto;
+    height: calc(100vh - 128px);
+    display: flex;
+    flex-direction: column;
+}
+
+.document-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    flex-shrink: 0;
+}
+
+.document-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.download-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.download-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7280;
+    margin-right: 8px;
+}
+
+.download-btn {
+    background-color: #d32f2f !important;
+    font-size: 14px;
+    height: 36px;
+
+    mat-icon {
+        margin-right: 4px;
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.user-button {
+    margin-left: 8px;
+    background-color: #fef2f2;
+    border-radius: 50%;
+
+    mat-icon {
+        color: #d32f2f;
+    }
+}
+
+.document-tabs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    ::ng-deep {
+        .mat-mdc-tab-group {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mat-mdc-tab-header {
+            flex-shrink: 0;
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .mat-mdc-tab-labels {
+            padding: 0 24px;
+        }
+
+        .mat-mdc-tab {
+            height: 48px;
+            min-width: 120px;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+
+            &.mdc-tab--active {
+                color: #d32f2f;
+            }
+        }
+
+        .mat-mdc-tab-body-wrapper {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .mat-mdc-tab-body {
+            height: 100%;
+        }
+
+        .mat-mdc-tab-body-content {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .mdc-tab-indicator__content--underline {
+            border-color: #d32f2f;
+            border-top-width: 3px;
+        }
+    }
+}
+
+.tab-content {
+    height: 100%;
+    overflow: hidden;
+}
+
+::ng-deep {
+    .mat-primary {
+        --mdc-filled-button-container-color: #d32f2f;
+        --mdc-filled-button-label-text-color: white;
+        --mat-filled-button-state-layer-color: #d32f2f;
+        --mat-filled-button-ripple-color: rgba(211, 47, 47, 0.1);
+    }
+}

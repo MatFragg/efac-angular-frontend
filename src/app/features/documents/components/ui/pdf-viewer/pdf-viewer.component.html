@@ -1,0 +1,10 @@
+<div class="pdf-viewer-container">
+    @if (pdfUrl) {
+    <iframe [src]="pdfUrl | safeUrl" class="pdf-frame" title="PDF Document Viewer"></iframe>
+    } @else {
+    <div class="empty-state">
+        <mat-icon class="empty-icon">description</mat-icon>
+        <p>No hay PDF disponible</p>
+    </div>
+    }
+</div>

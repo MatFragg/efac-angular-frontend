@@ -1,0 +1,24 @@
+<div class="code-viewer">
+    <!-- Toolbar -->
+    <div class="code-toolbar">
+        <div class="toolbar-left">
+            <mat-icon class="file-icon">description</mat-icon>
+            <span class="file-info">{{ filename }}</span>
+            <span class="line-count">{{ lineCount }} líneas</span>
+        </div>
+        <div class="toolbar-right">
+            <button mat-icon-button matTooltip="Copiar al portapapeles" (click)="copyToClipboard()"
+                class="action-button">
+                <mat-icon>content_copy</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Descargar archivo" (click)="downloadFile()" class="action-button">
+                <mat-icon>download</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Code Area -->
+    <div class="code-container">
+        <pre><code [highlight]="content" [language]="language"></code></pre>
+    </div>
+</div>
