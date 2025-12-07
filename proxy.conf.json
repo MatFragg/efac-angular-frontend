@@ -1,0 +1,11 @@
+{
+    "/api": {
+        "target": "https://odin-dev.efact.pe",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/api": "/api-efact-ose"
+        }
+    }
+}
