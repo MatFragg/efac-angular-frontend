@@ -488,18 +488,7 @@ npm run build
 
 ---
 
-## 7. Credenciales de Prueba
-
-**Usuario:** `tienda01`  
-**Contraseña:** `123456`
-
-**Tickets de Ejemplo:**
-- `2024032600001`
-- `2024050100123`
-
----
-
-## 8. Estructura de Rutas
+## 7. Estructura de Rutas
 
 | Ruta | Componente | Descripción | Guard |
 |------|-----------|-------------|-------|
@@ -511,7 +500,7 @@ npm run build
 
 ---
 
-## 9. Endpoints API Utilizados
+## 8. Endpoints API Utilizados
 
 ### Autenticación
 ```http
@@ -536,7 +525,7 @@ Authorization: Bearer {token}
 
 ---
 
-## 10. Mejoras Futuras
+## 9. Mejoras Futuras
 
 ### Corto Plazo
 - [ ] Implementar tests unitarios completos
@@ -558,7 +547,7 @@ Authorization: Bearer {token}
 
 ---
 
-## 11. Comandos Útiles
+## 10. Comandos Útiles
 
 ```bash
 # Generar componente
@@ -580,7 +569,7 @@ ng lint
 
 ---
 
-## 12. Recursos y Referencias
+## 11. Recursos y Referencias
 
 - [Angular Official Docs](https://angular.dev/)
 - [Angular Material](https://material.angular.io/)
@@ -590,13 +579,13 @@ ng lint
 
 ---
 
-## 13. Licencia
+## 12. Licencia
 
 Este proyecto es parte de una evaluación técnica para EFACT.
 
 ---
 
-## 14. Contacto
+## 13. Contacto
 
 **Desarrollador:** Ethan Matias Aliaga Aguirre  
 **Email:** ethan.aliaga@gmail.com  
